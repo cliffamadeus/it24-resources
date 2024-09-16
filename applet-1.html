@@ -9,8 +9,18 @@
     <title>IT24 Resources</title>
 </head>
 <body>
-    <h1>Event Driven Programming Applet</h1>
-    <h3><a href="applet-1.html">Applet 1 - Basic Events </a></h3>
+    <h3>Applet 1</h3>
+    <h1 id="displayText">Your text will appear here</h1>
+    <input type="text" id="textbox" placeholder="Type something here..." oninput="updateDisplay()">
 
+<script>
+//Event Function 1
+function updateDisplay() {
+    var textbox = document.getElementById('textbox');
+    var displayText = document.getElementById('displayText');
+    displayText.textContent = textbox.value;
+}
+
+</script>
 </body>
 </html>
