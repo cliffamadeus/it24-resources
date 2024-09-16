@@ -9,9 +9,14 @@
     <title>IT24 Resources</title>
 </head>
 <body>
-    <h3>Applet 1</h3>
+    <h3>Type input event</h3>
     <h1 id="displayText">Your text will appear here</h1>
     <input type="text" id="textbox" placeholder="Type something here..." oninput="updateDisplay()">
+    <br>
+    <br>
+
+    <h3>Click Button Event</h3>
+    <button class="btn btn-primary"onclick="showAlert()">Display Alert</button>
 
 <script>
 //Event Function 1
@@ -21,6 +26,11 @@ function updateDisplay() {
     displayText.textContent = textbox.value;
 }
 
+function showAlert() {
+    var textbox = document.getElementById('textbox');
+    var text = textbox.value;
+    alert('You entered: ' + text);
+}
 </script>
 </body>
 </html>
