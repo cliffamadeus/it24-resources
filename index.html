@@ -10,7 +10,10 @@
         .applet-flex-container{
             display:flex;
             justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
             margin-top: 2rem;
+            margin-left: 2rem;
             width: 80%;
         }
 
@@ -21,6 +24,12 @@
         .title{
             margin-top: 1rem;
             text-align: center;
+        }
+
+        .applet-card{
+          width: 25rem;
+          height: 12rem;
+          margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -59,7 +68,7 @@
     <h1 class="title">Event Driven Programming Applet</h1>
     <div class="applet-flex-container">
         <!--Applet 1 Card-->
-        <div class="card" style="width: 18rem;">
+        <div class="card applet-card" >
             <div class="card-body">
               <h5 class="card-title">Applet 1 - Basic Events </h5>
               <p class="card-text">This application contains the basic implementation of DOM events</p>
@@ -68,7 +77,7 @@
         </div>
 
          <!--Applet 2 Card-->
-         <div class="card" style="width: 18rem;">
+         <div class="card applet-card" >
           <div class="card-body">
             <h5 class="card-title">Applet 2 - Leaflet Map</h5>
             <p class="card-text">This application contains the basic web map</p>
@@ -76,7 +85,15 @@
           </div>
         </div>
 
-        
+        <!--Applet 3 Card-->
+        <div class="card applet-card" >
+          <div class="card-body">
+            <h5 class="card-title">Applet 3 </h5>
+            <p class="card-text"></p>
+            <a href="" class="btn btn-primary"></a>
+          </div>
+        </div>
+         
     </div>
 </body>
 </html>
