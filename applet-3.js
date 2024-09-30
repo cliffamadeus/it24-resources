@@ -1,7 +1,7 @@
 class DataLogger {
-    constructor(buttonId, listId) {
+    constructor(buttonId, cardContainerId) {
         this.logButton = document.getElementById(buttonId);
-        this.dataList = document.getElementById(listId);
+        this.cardContainer = document.getElementById(cardContainerId);
         this.loggedData = [];
 
         this.logButton.addEventListener('click', () => this.logData());
@@ -10,21 +10,26 @@ class DataLogger {
     logData() {
         const timestamp = new Date().toLocaleString();
         this.loggedData.push(timestamp);
-        this.updateDataList();
+        this.updateCardContainer();
     }
 
-    updateDataList() {
-
-        this.dataList.innerHTML = '';
+    updateCardContainer() {
+        this.cardContainer.innerHTML = '';
 
         this.loggedData.forEach(data => {
-            const listItem = document.createElement('li');
-            listItem.textContent = data;
-            this.dataList.appendChild(listItem);
+            const card = document.createElement('div');
+            card.className = 'card mb-2';
+            card.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">Logged Data</h5>
+                    <p class="card-text">${data}</p>
+                </div>
+            `;
+            this.cardContainer.appendChild(card);
         });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new DataLogger('logButton', 'dataList');
+    new DataLogger('logButton', 'cardContainer');
 });
