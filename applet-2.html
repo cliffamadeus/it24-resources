@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>IT24 Resources</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <title>Applet 2 - Leaflet Map</title>
     <style>
-        .applet-flex-container{
-            display:flex;
-            justify-content: center;
-            margin-top: 2rem;
-            width: 80%;
-        }
-
-        .applet-flex-container > div{
-            margin-left: .5rem;
-        }
-
-        .title{
+        .applet-container{
             margin-top: 1rem;
-            text-align: center;
+            margin-left: 2rem;
+            width: 90%;
         }
+
+        #map {
+            height: 600px;
+        }
+        
     </style>
+    
 </head>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -55,28 +53,55 @@
 </nav>
 
 <body>
-
-    <h1 class="title">Event Driven Programming Applet</h1>
-    <div class="applet-flex-container">
-        <!--Applet 1 Card-->
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Applet 1 - Basic Events </h5>
-              <p class="card-text">This application contains the basic implementation of DOM events</p>
-              <a href="applet-1.html" class="btn btn-primary">Go to Applet</a>
-            </div>
-        </div>
-
-         <!--Applet 2 Card-->
-         <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Applet 2 - Leaflet Map</h5>
-            <p class="card-text">This application contains the basic web map</p>
-            <a href="./applet-2.html" class="btn btn-primary">Go to Applet</a>
-          </div>
-        </div>
-
-        
+    <div class="applet-container">
+        <h3>Leaflet Map Basics</h3>
+        <div id="map"></div>
+      
     </div>
+   
+<script>
+class LeafletMap {
+
+    constructor(containerId, center, zoom) {
+        this.map = L.map(containerId).setView(center, zoom);
+        this.initTileLayer();
+    }
+
+    initTileLayer() {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this.map);
+    }
+
+    addMarker(lat, lng, message) {
+        const marker = L.marker([lat, lng]).addTo(this.map);
+        marker.bindPopup(message);
+    }
+
+    loadMarkersFromJson(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(marker => {
+                    this.addMarker(marker.latitude, marker.longitude, marker.message);
+                });
+            })
+            .catch(error => console.error('Error loading markers:', error));
+    }
+}
+
+const myMap = new LeafletMap('map', [8.360004, 124.868419], 18);
+
+/*
+myMap.addMarker(8.359735, 124.869206, 'CCS Faculty Office');
+myMap.addMarker(8.359639,124.869179, 'CCS Laboratory 1');
+myMap.addMarker(8.359554,124.869153, 'CCS Laboratory 2');
+*/
+
+myMap.loadMarkersFromJson('applet-2.json');
+
+</script>
 </body>
+
 </html>
