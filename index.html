@@ -23,7 +23,10 @@
 
         .title{
             margin-top: 1rem;
-            text-align: center;
+            margin-left: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .applet-card{
@@ -31,6 +34,9 @@
           height: 12rem;
           margin-bottom: 1rem;
         }
+
+        
+      
     </style>
 </head>
 
@@ -66,35 +72,35 @@
 
 <body>
 
-    <h1 class="title">Event Driven Programming Applet</h1>
-    <div class="applet-flex-container">
-        <!--Applet 1 Card-->
-        <div class="card applet-card" >
+    <h1 class="title" >Event Driven Programming Library</h1>
+      <div class="applet-flex-container">
+          <!--Applet 1 Card-->
+          <div class="card applet-card" >
+              <div class="card-body">
+                <h5 class="card-title">Applet 1 - Basic Events </h5>
+                <p class="card-text">This application contains the basic implementation of DOM events</p>
+                <a href="applet-1.html" class="btn btn-primary">Go to Applet</a>
+              </div>
+          </div>
+
+          <!--Applet 2 Card-->
+          <div class="card applet-card" >
             <div class="card-body">
-              <h5 class="card-title">Applet 1 - Basic Events </h5>
-              <p class="card-text">This application contains the basic implementation of DOM events</p>
-              <a href="applet-1.html" class="btn btn-primary">Go to Applet</a>
+              <h5 class="card-title">Applet 2 - Leaflet Map</h5>
+              <p class="card-text">This application contains the basic web map</p>
+              <a href="./applet-2.html" class="btn btn-primary">Go to Applet</a>
             </div>
-        </div>
-
-         <!--Applet 2 Card-->
-         <div class="card applet-card" >
-          <div class="card-body">
-            <h5 class="card-title">Applet 2 - Leaflet Map</h5>
-            <p class="card-text">This application contains the basic web map</p>
-            <a href="./applet-2.html" class="btn btn-primary">Go to Applet</a>
           </div>
-        </div>
 
-        <!--Applet 3 Card-->
-        <div class="card applet-card" >
-          <div class="card-body">
-            <h5 class="card-title">Applet 3 - Event Button Logger </h5>
-            <p class="card-text">This application applies recording events while using HTML elements such as buttons</p>
-            <a href="./applet-3.html" class="btn btn-primary">Go to Applet</a>
+          <!--Applet 3 Card-->
+          <div class="card applet-card" >
+            <div class="card-body">
+              <h5 class="card-title">Applet 3 - Event Button Logger </h5>
+              <p class="card-text">This application applies recording events while using HTML elements such as buttons</p>
+              <a href="./applet-3.html" class="btn btn-primary">Go to Applet</a>
+            </div>
           </div>
-        </div>
-         
-    </div>
+          
+      </div>
 </body>
 </html>
