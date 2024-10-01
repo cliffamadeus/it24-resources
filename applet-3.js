@@ -1,8 +1,9 @@
 class DataLogger {
-    constructor(buttonId, cardContainerId, clearButtonId) {
+    constructor(buttonId, cardContainerId, clearButtonId, logCountId) {
         this.logButton = document.getElementById(buttonId);
         this.cardContainer = document.getElementById(cardContainerId);
         this.clearButton = document.getElementById(clearButtonId);
+        this.logCountElement = document.getElementById(logCountId); 
         this.loggedData = [];
 
         this.logButton.addEventListener('click', () => this.logData());
@@ -24,6 +25,7 @@ class DataLogger {
         this.cardContainer.innerHTML = '';
 
         this.loggedData.forEach(data => {
+            
             const card = document.createElement('div');
             card.className = 'card mb-2';
             card.innerHTML = `
@@ -34,9 +36,20 @@ class DataLogger {
             `;
             this.cardContainer.appendChild(card);
         });
+        
+        this.displayLogCount();
+    }
+
+    countLogs() {
+        return this.loggedData.length;
+    }
+
+    displayLogCount() {
+        const logCount = this.countLogs();
+        this.logCountElement.innerHTML = `<p>Total Logs: ${logCount}</p>`; 
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new DataLogger('logButton', 'cardContainer', 'clearButton');
+    new DataLogger('logButton', 'cardContainer', 'clearButton', 'logCount'); 
 });
