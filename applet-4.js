@@ -22,15 +22,11 @@ class StudentList {
 
     renderStudentList(students) {
         const studentListContainer = document.getElementById('studentList');
-        studentListContainer.innerHTML = ''; 
-
-        students.forEach(student => {
-            const listItem = document.createElement('p');
-            listItem.textContent = `${student.student_name} - ${student.student_program}`;
-            studentListContainer.appendChild(listItem);
-        });
+        studentListContainer.innerHTML = students.map(student => 
+            `<p>${student.student_name} - ${student.student_program}</p>`
+        ).join('');
     }
-
+    
     bindSearchEvent() {
         const studentSearchBar = document.getElementById('studentSearchBar');
         const studentSearchListContainer = document.getElementById('studentSearchList');
