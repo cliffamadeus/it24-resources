@@ -1,4 +1,5 @@
 class StudentList {
+    
     constructor(dataUrl) {
         this.dataUrl = dataUrl;
         this.students = [];
@@ -23,10 +24,10 @@ class StudentList {
     renderStudentList(students) {
         const studentListContainer = document.getElementById('studentList');
         studentListContainer.innerHTML = students.map(student => 
-            `<p>${student.student_name} - ${student.student_program}</p>`
+            `<button class="btn btn-primary" style="margin-top:20px">${student.student_name} - ${student.student_program}</button><br>`
         ).join('');
     }
-    
+
     bindSearchEvent() {
         const studentSearchBar = document.getElementById('studentSearchBar');
         const studentSearchListContainer = document.getElementById('studentSearchList');
@@ -48,7 +49,7 @@ class StudentList {
 
         this.renderStudentList(filteredStudents, searchListContainer);
     }
-
+    
 }
 
 const studentList = new StudentList('applet-4.json');
