@@ -12,9 +12,10 @@
             margin-left: 2rem;
         }
 
-        .applet-3{
+        .input-search{
           margin-left: 3rem;
           margin-top: 2rem;
+          width:50%;
         }
 
     </style>
@@ -37,6 +38,7 @@
               <li><a class="dropdown-item" href="applet-1.html">Applet 1</a></li>
               <li><a class="dropdown-item" href="applet-2.html">Applet 2</a></li>
               <li><a class="dropdown-item" href="applet-3.html">Applet 3</a></li>
+              <li><a class="dropdown-item" href="applet-4.html">Applet 3</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -53,10 +55,15 @@
 
 <body>
 
+  <div class="input-group input-group-lg input-search">
+    <span class="input-group-text">Search</span>
+    <input type="text" class="form-control"  id="studentSearchBar">
+    <div id="suggestions" class="suggestions-list"></div>
+    <div id="studentList"></div>
+    <div id="studentSearchList"></div>
+  </div>
 
-    
-
-<script src=""></script>
+<script src="applet-4.json"></script>
 </body>
 
 </html>
