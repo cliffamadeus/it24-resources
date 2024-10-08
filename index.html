@@ -9,9 +9,9 @@
     <style>
         .applet-flex-container{
             display:flex;
-            justify-content: left;
+            justify-content: flex-start;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 2rem;
             margin-left: 2rem;
             width: 80%;
@@ -30,13 +30,13 @@
         }
 
         .applet-card{
-          width: 25rem;
+          flex: 1 1 20rem; 
+          max-width: 25rem;
           height: 12rem;
           margin-bottom: 1rem;
+          box-sizing: border-box;
         }
 
-        
-      
     </style>
 </head>
 
