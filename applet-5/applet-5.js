@@ -13,6 +13,8 @@ class WeatherApp {
         this.cityName = document.getElementById('cityName');
         this.temperature = document.getElementById('temperature');
         this.description = document.getElementById('description');
+        this.humidity = document.getElementById('humidity');
+        this.windSpeed = document.getElementById('windSpeed');
 
         //Event Listener
         this.getWeatherBtn.addEventListener('click', () => this.fetchWeather());
@@ -20,12 +22,15 @@ class WeatherApp {
     }
 
     displayWeather(data) {
-        this.cityName.textContent = data.name || `Lat: ${data.coord.lat}, Lon: ${data.coord.lon}`;
+        this.cityName.textContent = `${data.name}, ${data.sys.country} (${data.coord.lat}, ${data.coord.lon})`;
         this.temperature.textContent = `Temperature: ${data.main.temp} °C`;
         this.description.textContent = `Weather: ${data.weather[0].description}`;
-        
+        this.humidity.textContent = `Humidity: ${data.main.humidity}%`;
+        this.windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
+    
         this.weatherCard.style.display = 'block';
     }
+    
 }
 
 class WeatherService extends WeatherApp {
