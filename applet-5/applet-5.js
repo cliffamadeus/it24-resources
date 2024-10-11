@@ -1,18 +1,34 @@
 class WeatherApp {
     constructor(apiKey) {
         this.apiKey = apiKey;
+        //Text Input
         this.cityInput = document.getElementById('cityInput');
         this.getWeatherBtn = document.getElementById('getWeatherBtn');
+
+        //Geolocation Input
         this.getLocationBtn = document.getElementById('getLocationBtn');
+
+        //Weather Card
         this.weatherCard = document.getElementById('weatherCard');
         this.cityName = document.getElementById('cityName');
         this.temperature = document.getElementById('temperature');
         this.description = document.getElementById('description');
 
-        this.getWeatherBtn.addEventListener('click', () => this.fetchWeatherByLocation());
+        //Event Listener
+        this.getWeatherBtn.addEventListener('click', () => this.fetchWeather());
         this.getLocationBtn.addEventListener('click', () => this.fetchWeatherByLocation());
     }
 
+    displayWeather(data) {
+        this.cityName.textContent = data.name || `Lat: ${data.coord.lat}, Lon: ${data.coord.lon}`;
+        this.temperature.textContent = `Temperature: ${data.main.temp} °C`;
+        this.description.textContent = `Weather: ${data.weather[0].description}`;
+        
+        this.weatherCard.style.display = 'block';
+    }
+}
+
+class WeatherService extends WeatherApp {
     async fetchWeather() {
         const city = this.cityInput.value;
         if (city) {
@@ -35,6 +51,7 @@ class WeatherApp {
                     const data = await this.getWeatherDataByCoordinates(latitude, longitude);
                     if (data) {
                         this.displayWeather(data);
+                        this.cityInput.value = '';
                     } else {
                         alert('Unable to retrieve weather data for your location.');
                     }
@@ -71,15 +88,7 @@ class WeatherApp {
         }
         return null;
     }
-
-    displayWeather(data) {
-        this.cityName.textContent = data.name || `Lat: ${data.coord.lat}, Lon: ${data.coord.lon}`;
-        this.temperature.textContent = `Temperature: ${data.main.temp} °C`;
-        this.description.textContent = `Weather: ${data.weather[0].description}`;
-        
-        this.weatherCard.style.display = 'block';
-    }
 }
 
-const apiKey = 'YOUR_API_KEY'; 
-const weatherApp = new WeatherApp(apiKey);
+const apiKey = ''; 
+const weatherApp = new WeatherService(apiKey);
