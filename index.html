@@ -9,9 +9,9 @@
     <style>
         .applet-flex-container{
             display:flex;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 2rem;
             margin-left: 2rem;
             width: 80%;
@@ -30,13 +30,13 @@
         }
 
         .applet-card{
-          width: 25rem;
+          flex: 1 1 20rem; 
+          max-width: 25rem;
           height: 12rem;
           margin-bottom: 1rem;
+          box-sizing: border-box;
         }
 
-        
-      
     </style>
 </head>
 
@@ -56,6 +56,7 @@
               <li><a class="dropdown-item" href="./applet-1/">Applet 1</a></li>
               <li><a class="dropdown-item" href="./applet-2/">Applet 2</a></li>
               <li><a class="dropdown-item" href="./applet-3/">Applet 3</a></li>
+              <li><a class="dropdown-item" href="./applet-4/">Applet 4</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -98,6 +99,24 @@
               <h5 class="card-title">Applet 3 - Event Button Logger </h5>
               <p class="card-text">This application applies recording events while using HTML elements such as buttons</p>
               <a href="./applet-3/" class="btn btn-primary">Go to Applet</a>
+            </div>
+          </div>
+
+           <!--Applet 4 Card-->
+           <div class="card applet-card" >
+            <div class="card-body">
+              <h5 class="card-title">Applet 4 - Dynamic Elements </h5>
+              <p class="card-text">This application applies dynamic elements such as rendering DOM elements from a list</p>
+              <a href="./applet-4/" class="btn btn-primary">Go to Applet</a>
+            </div>
+          </div>
+
+           <!--Applet 5 Card-->
+           <div class="card applet-card" >
+            <div class="card-body">
+              <h5 class="card-title">Applet 5 - Openweather API </h5>
+              <p class="card-text">This application is the basic usage of the Openweather API</p>
+              <a href="./applet-5/" class="btn btn-primary">Go to Applet</a>
             </div>
           </div>
           
