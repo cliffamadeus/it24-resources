@@ -31,7 +31,8 @@
 
         .applet-card{
           flex: 1 1 20rem; 
-          max-width: 25rem;
+          max-width: 20rem;
+          width: 25rem;
           height: 12rem;
           margin-bottom: 1rem;
           box-sizing: border-box;
@@ -74,52 +75,8 @@
 <body>
 
     <h1 class="title" >Event Driven Programming Library</h1>
-      <div class="applet-flex-container">
-          <!--Applet 1 Card-->
-          <div class="card applet-card" >
-              <div class="card-body">
-                <h5 class="card-title">Applet 1 - Basic Events </h5>
-                <p class="card-text">This application contains the basic implementation of DOM events</p>
-                <a href="./applet-1/" class="btn btn-primary">Go to Applet</a>
-              </div>
-          </div>
+      <div class="applet-flex-container"  id="applet-container"></div>
 
-          <!--Applet 2 Card-->
-          <div class="card applet-card" >
-            <div class="card-body">
-              <h5 class="card-title">Applet 2 - Leaflet Map</h5>
-              <p class="card-text">This application contains the basic web map</p>
-              <a href="./applet-2/" class="btn btn-primary">Go to Applet</a>
-            </div>
-          </div>
-
-          <!--Applet 3 Card-->
-          <div class="card applet-card" >
-            <div class="card-body">
-              <h5 class="card-title">Applet 3 - Event Button Logger </h5>
-              <p class="card-text">This application applies recording events while using HTML elements such as buttons</p>
-              <a href="./applet-3/" class="btn btn-primary">Go to Applet</a>
-            </div>
-          </div>
-
-           <!--Applet 4 Card-->
-           <div class="card applet-card" >
-            <div class="card-body">
-              <h5 class="card-title">Applet 4 - Dynamic Elements </h5>
-              <p class="card-text">This application applies dynamic elements such as rendering DOM elements from a list</p>
-              <a href="./applet-4/" class="btn btn-primary">Go to Applet</a>
-            </div>
-          </div>
-
-           <!--Applet 5 Card-->
-           <div class="card applet-card" >
-            <div class="card-body">
-              <h5 class="card-title">Applet 5 - Openweather API </h5>
-              <p class="card-text">This application is the basic usage of the Openweather API</p>
-              <a href="./applet-5/" class="btn btn-primary">Go to Applet</a>
-            </div>
-          </div>
-          
-      </div>
+<script src="applets.js"></script>
 </body>
 </html>
