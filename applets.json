@@ -1,0 +1,28 @@
+[
+    {
+      "title": "Applet 1 - Basic Events",
+      "description": "This application contains the basic implementation of DOM events",
+      "link": "./applet-1/"
+    },
+    {
+      "title": "Applet 2 - Leaflet Map",
+      "description": "This application contains the basic web map",
+      "link": "./applet-2/"
+    },
+    {
+      "title": "Applet 3 - Event Button Logger",
+      "description": "This application applies recording events while using HTML elements such as buttons",
+      "link": "./applet-3/"
+    },
+    {
+      "title": "Applet 4 - Dynamic Elements",
+      "description": "This application applies dynamic elements such as rendering DOM elements from a list",
+      "link": "./applet-4/"
+    },
+    {
+      "title": "Applet 5 - Openweather API",
+      "description": "This application is the basic usage of the Openweather API",
+      "link": "./applet-5/"
+    }
+  ]
+  
