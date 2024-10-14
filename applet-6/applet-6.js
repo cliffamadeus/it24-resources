@@ -26,7 +26,8 @@ class TodoList {
         listItem.className = 'list-group-item todo-item';
         listItem.innerHTML = `
             <span class="task-text">${taskText}</span>
-            <div>
+            <span class="timestamp" style="display: block; margin-top: 0.5rem; color: gray;">Date Added: ${new Date().toLocaleString()}</span>
+            <div style="margin-top: 0.5rem;">
                 <button class="btn btn-warning btn-sm editButton">Edit</button>
                 <button class="btn btn-danger btn-sm removeButton">Remove</button>
             </div>
@@ -53,6 +54,18 @@ class TodoList {
     resetEditing() {
         this.editingIndex = -1;
         this.addButton.textContent = 'Add';
+    }
+}
+
+
+class TimestampedTodoList extends TodoList {
+    addTask(taskText) {
+        super.addTask(taskText);
+        const taskItem = this.todoList.lastChild; // Get the newly added task
+        const timestamp = document.createElement('span');
+        timestamp.className = 'timestamp';
+        timestamp.textContent = new Date().toLocaleString();
+        taskItem.appendChild(timestamp);
     }
 }
 
