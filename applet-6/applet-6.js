@@ -5,28 +5,18 @@ class TodoList {
         this.todoInput = document.getElementById('todoInput');
         this.todoList = document.getElementById('todoList');
 
-        this.init();
-    }
-
-    init() {
         this.addButton.addEventListener('click', () => this.addOrUpdateTask());
         this.todoList.addEventListener('click', (e) => {
-            if (e.target.classList.contains('removeButton')) {
-                this.removeTask(e);
-            } else if (e.target.classList.contains('editButton')) {
-                this.editTask(e);
-            }
+            const action = e.target.classList.contains('removeButton') ? 'remove' : 
+                           e.target.classList.contains('editButton') ? 'edit' : null;
+            if (action) this[action + 'Task'](e);
         });
     }
 
     addOrUpdateTask() {
         const taskText = this.todoInput.value.trim();
         if (taskText) {
-            if (this.editingIndex === -1) {
-                this.addTask(taskText);
-            } else {
-                this.updateTask(taskText);
-            }
+            this.editingIndex === -1 ? this.addTask(taskText) : this.updateTask(taskText);
             this.todoInput.value = '';
         }
     }
@@ -45,26 +35,25 @@ class TodoList {
     }
 
     updateTask(taskText) {
-        const taskItem = this.todoList.children[this.editingIndex];
-        taskItem.querySelector('.task-text').textContent = taskText;
-        this.editingIndex = -1; 
-        this.addButton.textContent = 'Add';
+        this.todoList.children[this.editingIndex].querySelector('.task-text').textContent = taskText;
+        this.resetEditing();
     }
 
     removeTask(event) {
-        const taskItem = event.target.closest('.todo-item');
-        this.todoList.removeChild(taskItem);
+        this.todoList.removeChild(event.target.closest('.todo-item'));
     }
 
     editTask(event) {
         const taskItem = event.target.closest('.todo-item');
-        const taskText = taskItem.querySelector('.task-text').textContent;
-        this.todoInput.value = taskText;
+        this.todoInput.value = taskItem.querySelector('.task-text').textContent;
         this.editingIndex = Array.from(this.todoList.children).indexOf(taskItem);
         this.addButton.textContent = 'Update';
     }
+
+    resetEditing() {
+        this.editingIndex = -1;
+        this.addButton.textContent = 'Add';
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    new TodoList();
-});
+document.addEventListener('DOMContentLoaded', () => new TodoList());
