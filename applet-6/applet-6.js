@@ -8,7 +8,8 @@ class TodoList {
         this.addButton.addEventListener('click', () => this.addOrUpdateTask());
         this.todoList.addEventListener('click', (e) => {
             const action = e.target.classList.contains('removeButton') ? 'remove' : 
-                           e.target.classList.contains('editButton') ? 'edit' : null;
+                           e.target.classList.contains('editButton') ? 'edit' : 
+                           e.target.classList.contains('doneButton') ? 'done' : null;
             if (action) this[action + 'Task'](e);
         });
     }
@@ -28,11 +29,18 @@ class TodoList {
             <span class="task-text">${taskText}</span>
             <span class="timestamp" style="display: block; margin-top: 0.5rem; color: gray;">Date Added: ${new Date().toLocaleString()}</span>
             <div style="margin-top: 0.5rem;">
+                <button class="btn btn-success btn-sm doneButton">Done</button>
                 <button class="btn btn-warning btn-sm editButton">Edit</button>
                 <button class="btn btn-danger btn-sm removeButton">Remove</button>
             </div>
         `;
         this.todoList.appendChild(listItem);
+    }
+
+    doneTask(event) {
+        const taskItem = event.target.closest('.todo-item');
+        const taskText = taskItem.querySelector('.task-text');
+        taskText.classList.toggle('completed'); 
     }
 
     updateTask(taskText) {
@@ -55,8 +63,8 @@ class TodoList {
         this.editingIndex = -1;
         this.addButton.textContent = 'Add';
     }
+    
 }
-
 
 class TimestampedTodoList extends TodoList {
     addTask(taskText) {
