@@ -3,6 +3,9 @@ class LeafletMap {
     constructor(containerId, center, zoom) {
         this.map = L.map(containerId).setView(center, zoom);
         this.initTileLayer();
+
+        this.marker = null; 
+        this.map.on('click', (e) => this.onMapClick(e));
     }
 
     initTileLayer() {
@@ -10,6 +13,20 @@ class LeafletMap {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(this.map);
+    }
+
+    
+    onMapClick(event) {
+        const { lat, lng } = event.latlng;
+        this.addDynamicMarker(lat, lng);
+    }
+
+    addDynamicMarker(lat, lng) {
+        if (this.marker) {
+            this.map.removeLayer(this.marker); 
+        }
+        this.marker = L.marker([lat, lng]).addTo(this.map);
+        this.marker.bindPopup(`Coordinates: ${lat.toFixed(5)}, ${lng.toFixed(5)}`).openPopup();
     }
 
     addMarker(lat, lng, message) {
