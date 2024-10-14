@@ -23,6 +23,11 @@
       "title": "Applet 5 - Openweather API",
       "description": "This application is the basic usage of the Openweather API",
       "link": "./applet-5/"
+    },
+    {
+      "title": "Applet 6 - Todo List",
+      "description": "A to-do list is a tool that helps individuals manage tasks by allowing them to add, edit, and remove items.",
+      "link": "./applet-6/"
     }
   ]
   
