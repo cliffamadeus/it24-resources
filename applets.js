@@ -12,7 +12,7 @@ class AppletCard {
             <div class="card-body">
                 <h5 class="card-title">${this.title}</h5>
                 <p class="card-text">${this.description}</p>
-                <a href="${this.link}" class="btn btn-primary">Go to Applet</a>
+                <a href="${this.link}" class="btn btn-primary applet-btn" style="">Go to Applet</a>
             </div>
         `;
         return cardDiv;
