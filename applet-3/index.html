@@ -13,7 +13,6 @@
         }
 
         .applet-3{
-          margin-left: 3rem;
           margin-top: 2rem;
         }
 
@@ -54,16 +53,29 @@
     </div>
 </nav>
 
-    <div class="applet-3">
+<div class="container applet-3">
+  <div class="row">
+    <div class="col-6">
       <h1>Event Button Logger</h1>
+      <!--Log Conter-->
       <h3 id="logCount">Total Logs: 0</h3>
       <br>
-      <button class="btn btn-primary" id="logButton">Click Me</button>
-      <button class="btn btn-secondary"  id="clearButton">Clear</button>
-     <h2>Collected Data:</h2>
-     <div id="cardContainer" style="width:20rem"></div>
-    </div>
     
+      <!--Log Button-->
+      <button class="btn btn-primary" id="logButton">Click Me</button>
+    
+      <!--Clear Button-->
+      <button class="btn btn-secondary"  id="clearButton">Clear</button>
+    </div>
+    <div class="col-6">
+      <h2>Collected Data:</h2>
+
+      <!--Log Item Container-->
+      <div id="logsContainer" style="width:20rem"></div>
+    
+    </div>
+  </div>
+</div>
 <script src="applet-3.js"></script>
 </body>
 
