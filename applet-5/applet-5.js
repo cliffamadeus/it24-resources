@@ -29,9 +29,15 @@ class WeatherApp {
         this.description.textContent = `Weather: ${data.weather[0].description}`;
         this.humidity.textContent = `Humidity: ${data.main.humidity}%`;
         this.windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
+        
+        // Set the weather icon
+        const iconCode = data.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        document.getElementById('weatherIcon').src = iconUrl;
     
         this.weatherCard.style.display = 'block';
     }
+    
     
 }
 
