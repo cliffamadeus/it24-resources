@@ -9,10 +9,20 @@ class AppletCard {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card applet-card';
         cardDiv.innerHTML = `
-            <div class="card-body">
-                <h5 class="card-title">${this.title}</h5>
-                <p class="card-text">${this.description}</p>
-                <a href="${this.link}" class="btn btn-primary applet-btn" style="">Go to Applet</a>
+            <div class="card"  data-bs-toggle="tooltip" title="${this.description}">
+                <a href="${this.link}" style="text-decoration: none; color: inherit;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="..." class="rounded float-start">
+                            </div>
+                            <div class="col-8">
+                                <h5 class="card-title">${this.title}</h5>
+                                <p class="card-text"</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         `;
         return cardDiv;
@@ -20,14 +30,12 @@ class AppletCard {
 }
 
 class AppletRenderer {
-    constructor(containerId,searchInputId) {
+    constructor(containerId, searchInputId) {
         this.container = document.getElementById(containerId);
-
-        //
         this.searchInput = document.getElementById(searchInputId);
         this.appletData = [];
         this.filteredData = [];
-        this.searchInput.addEventListener('input',()=> this.filterApplets());
+        this.searchInput.addEventListener('input', () => this.filterApplets());
     }
 
     fetchAppletData(url) {
@@ -48,9 +56,19 @@ class AppletRenderer {
             const cardElement = appletCard.createCard();
             this.container.appendChild(cardElement);
         });
+
+        // Initialize tooltips after rendering
+        this.initializeTooltips();
     }
 
-    filterApplets(){
+    initializeTooltips() {
+        const tooltipTriggerList = [].slice.call(this.container.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(tooltipTriggerEl => {
+            new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    }
+
+    filterApplets() {
         const query = this.searchInput.value.toLowerCase();
         this.filteredData = this.appletData.filter(applet =>
             applet.title.toLowerCase().includes(query) ||
@@ -60,5 +78,5 @@ class AppletRenderer {
     }
 }
 
-const appletRenderer = new AppletRenderer('applet-container','searchApplet');
+const appletRenderer = new AppletRenderer('applet-container', 'searchApplet');
 appletRenderer.fetchAppletData('applets.json');
