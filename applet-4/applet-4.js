@@ -1,5 +1,4 @@
 class StudentList {
-    
     constructor(dataUrl) {
         this.dataUrl = dataUrl;
         this.students = [];
@@ -22,37 +21,36 @@ class StudentList {
     }
 
     renderStudentList(students) {
-        const studentListContainer = document.getElementById('studentList');
-        studentListContainer.innerHTML = students.map(student => 
-            `<button class="btn btn-primary" style="margin-top:15px; 
-                                                    width:25rem">
-                ${student.student_name} | ${student.student_program}
-            </button><br>`
-        ).join('');
-    }
+        const studentSearchListContainer = document.getElementById('studentSearchList');
+        studentSearchListContainer.innerHTML = ''; 
 
+        students.forEach(student => {
+            studentSearchListContainer.innerHTML += `
+                <p> ${student.student_name}</p>
+                <p class="fw-light"> ${student.student_program} </p>
+                <hr>
+            `;
+        });
+    }
+    
     bindSearchEvent() {
         const studentSearchBar = document.getElementById('studentSearchBar');
-        const studentSearchListContainer = document.getElementById('studentSearchList');
 
         studentSearchBar.addEventListener('input', () => {
-            this.filterStudents(studentSearchBar.value, studentSearchListContainer);
+            this.filterStudents(studentSearchBar.value);
         });
 
-        this.renderStudentList(this.students, studentSearchListContainer);
+        this.renderStudentList(this.students);
     }
 
-    filterStudents(query, searchListContainer) {
+    filterStudents(query) {
         const filteredStudents = this.students.filter(student => {
             const fullName = `${student.student_name} ${student.student_program}`;
             return fullName.toLowerCase().includes(query.toLowerCase());
         });
 
-        searchListContainer.innerHTML = '';
-
-        this.renderStudentList(filteredStudents, searchListContainer);
+        this.renderStudentList(filteredStudents);
     }
-    
 }
 
 const studentList = new StudentList('applet-4.json');

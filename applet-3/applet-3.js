@@ -27,11 +27,12 @@ class DataLogger {
         this.loggedData.forEach(data => {
             
             const card = document.createElement('div');
-            card.className = 'card mb-2';
+            card.className = 'li';
             card.innerHTML = `
                 <div class="card-body">
                     <h5 class="card-title">Logged Data</h5>
                     <p class="card-text">${data}</p>
+                    <hr>
                 </div>
             `;
             this.cardContainer.appendChild(card);
@@ -51,5 +52,5 @@ class DataLogger {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new DataLogger('logButton', 'cardContainer', 'clearButton', 'logCount'); 
+    new DataLogger('logButton', 'logsContainer', 'clearButton', 'logCount'); 
 });

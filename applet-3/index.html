@@ -13,56 +13,69 @@
         }
 
         .applet-3{
-          margin-left: 3rem;
           margin-top: 2rem;
         }
 
     </style>
     
 </head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Applets
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../applet-1/">Applet 1</a></li>
+              <li><a class="dropdown-item" href="../applet-2/">Applet 2</a></li>
+              <li><a class="dropdown-item" href="../applet-4/">Applet 4</a></li>
+              <li><a class="dropdown-item" href="../applet-5/">Applet 5</a></li>
+              <li><a class="dropdown-item" href="../applet-6/">Applet 6</a></li>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="../index.html">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Applets
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../applet-1/">Applet 1</a></li>
-            <li><a class="dropdown-item" href="../applet-3/">Applet 2</a></li>
-            <li><a class="dropdown-item" href="../applet-3/">Applet 3</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
     </div>
-  </div>
 </nav>
 
-<body>
-
-    <div class="applet-3">
+<div class="container applet-3">
+  <div class="row">
+    <div class="col-6">
       <h1>Event Button Logger</h1>
+      <!--Log Conter-->
       <h3 id="logCount">Total Logs: 0</h3>
       <br>
-      <button class="btn btn-primary" id="logButton">Click Me</button>
-      <button class="btn btn-secondary"  id="clearButton">Clear</button>
-     <h2>Collected Data:</h2>
-     <div id="cardContainer" style="width:20rem"></div>
-    </div>
     
+      <!--Log Button-->
+      <button class="btn btn-primary" id="logButton">Click Me</button>
+    
+      <!--Clear Button-->
+      <button class="btn btn-secondary"  id="clearButton">Clear</button>
+    </div>
+    <div class="col-6">
+      <h2>Collected Data:</h2>
+
+      <!--Log Item Container-->
+      <div id="logsContainer" style="width:20rem"></div>
+    
+    </div>
+  </div>
+</div>
 <script src="applet-3.js"></script>
 </body>
 
