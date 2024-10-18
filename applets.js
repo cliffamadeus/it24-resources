@@ -1,6 +1,7 @@
 class AppletCard {
-    constructor(title, description, link) {
+    constructor(title,icon, description, link) {
         this.title = title;
+        this.icon = icon;
         this.description = description;
         this.link = link;
     }
@@ -14,7 +15,7 @@ class AppletCard {
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4">
-                                <img src="..." class="rounded float-start">
+                                <img src="${this.icon}" class="applet-icon rounded float-start">
                             </div>
                             <div class="col-8">
                                 <h5 class="card-title">${this.title}</h5>
@@ -52,7 +53,7 @@ class AppletRenderer {
     renderApplets(data) {
         this.container.innerHTML = '';
         data.forEach(applet => {
-            const appletCard = new AppletCard(applet.title, applet.description, applet.link);
+            const appletCard = new AppletCard(applet.title,applet.icon, applet.description, applet.link);
             const cardElement = appletCard.createCard();
             this.container.appendChild(cardElement);
         });

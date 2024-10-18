@@ -1,31 +1,37 @@
 [
     {
       "title": "Applet 1 - Basic Events",
+      "icon":"https://cdn-icons-png.flaticon.com/512/2646/2646050.png",
       "description": "This application contains the basic implementation of DOM events",
       "link": "./applet-1/"
     },
     {
       "title": "Applet 2 - Leaflet Map",
+      "icon":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmZv06V4sKZ9tiqDk6e5iGYRKL3urUgHRZHA&s",
       "description": "This application contains the basic web map",
       "link": "./applet-2/"
     },
     {
       "title": "Applet 3 - Event Button Logger",
+      "icon":"https://cdn3d.iconscout.com/3d/premium/thumb/focus-3d-icon-download-in-png-blend-fbx-gltf-file-formats--target-goal-aim-arrow-business-pack-icons-4997123.png",
       "description": "This application applies recording events while using HTML elements such as buttons",
       "link": "./applet-3/"
     },
     {
       "title": "Applet 4 - Dynamic Elements",
+      "icon":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUBvxo5D1HhtA1ORmg3iifsuLNY5B_iVWIwg&s",
       "description": "This application applies dynamic elements such as rendering DOM elements from a list",
       "link": "./applet-4/"
     },
     {
       "title": "Applet 5 - Openweather API",
+      "icon":"https://avatars.githubusercontent.com/u/1743227?s=200&v=4",
       "description": "This application is the basic usage of the Openweather API",
       "link": "./applet-5/"
     },
     {
       "title": "Applet 6 - Todo List",
+      "icon":"https://static-00.iconduck.com/assets.00/todo-icon-1024x1024-7nszgsj6.png",
       "description": "A to-do list is a tool that helps individuals manage tasks by allowing them to add, edit, and remove items.",
       "link": "./applet-6/"
     }
