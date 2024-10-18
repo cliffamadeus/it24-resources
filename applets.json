@@ -7,7 +7,7 @@
     },
     {
       "title": "Applet 2 - Leaflet Map",
-      "icon":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmZv06V4sKZ9tiqDk6e5iGYRKL3urUgHRZHA&s",
+      "icon":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu4gT87YXiRIJcjmHwe0jcXir1-2gqcpBR0g&s",
       "description": "This application contains the basic web map",
       "link": "./applet-2/"
     },
