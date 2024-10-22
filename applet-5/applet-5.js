@@ -104,8 +104,9 @@ class WeatherService extends WeatherApp {
     }
 }
 const weatherApp = new WeatherService();
-
+/*
 document.addEventListener('DOMContentLoaded', () => {
     const modal = new bootstrap.Modal(document.getElementById('infoModal'));
     modal.show();
 });
+*/
