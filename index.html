@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>IT24 Resources</title>
-    <style>
-      .applet-flex-container {
-          display: flex;
-          justify-content: flex-start;
-          flex-wrap: wrap;
-          align-items: center;
-          margin-top: 2rem;
-          margin-left: 10rem;
-          width: 80%;
-      }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <title>IT24 Resources</title>
+  <style>
+    .applet-flex-container {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin: 2rem auto;
+      width: 90%;
+    }
 
-      .applet-flex-container > div {
-          margin-left: 0.8rem;
-      }
+    .applet-flex-container > div {
+      margin: 0.8rem;
+    }
 
-      .title {
-          margin-top: 1rem;
-          margin-left: 11rem;
-          justify-content: center;
-          flex-wrap: wrap;
-          align-items: center;
-      }
+    .title {
+      margin: 2rem auto 0;
+      text-align: center;
+    }
 
-      .applet-card {
-          flex: 1 1 20rem; 
-          max-width: 20rem;
-          width: 25rem;
-          height: 15rem;
-          margin-bottom: 1rem;
-          box-sizing: border-box;
-      }
+    .applet-card {
+      flex: 1 1 20rem;
+      max-width: 20rem;
+      width: 25rem;
+      height: 15rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
 
-      .applet-btn {
-          position: absolute; 
-          bottom: 20px; 
-          right: 20px;
-      }
+    .applet-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
 
-    </style>
+    h2 {
+      margin-left: 5%;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">Home</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Applets
             </a>
             <ul class="dropdown-menu">
@@ -73,18 +78,92 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" aria-label="Search" id="searchApplet" placeholder="Search applets...">
-          <button class="btn btn-outline-success" type="submit" >Search</button>
+          <input class="form-control me-2" type="search" placeholder="Search applets..." aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
-</nav>
+  </nav>
 
-<body>
+  <h1 class="title">Event Driven Programming Library</h1>
+  <div class="applet-flex-container" id="applet-container"></div>
 
-    <h1 class="title" >Event Driven Programming Library</h1>
-    <div class="applet-flex-container"  id="applet-container"></div>
+  <script>
+    const applets = [
+      { title: "Applet 1", url: "./applet-1/" },
+      { title: "Applet 2", url: "./applet-2/" },
+      { title: "Applet 3", url: "./applet-3/" },
+      { title: "Applet 4", url: "./applet-4/" },
+      { title: "Applet 5", url: "./applet-5/" },
+      { title: "Applet 6", url: "./applet-6/" },
+    ];
 
-<script src="applets.js"></script>
+    function getUsageData() {
+      const data = localStorage.getItem("appletUsage");
+      return data ? JSON.parse(data) : {};
+    }
+
+    function saveUsageData(data) {
+      localStorage.setItem("appletUsage", JSON.stringify(data));
+    }
+
+    function trackAppletAccess(title) {
+      const usage = getUsageData();
+      const now = new Date().toLocaleString();
+      if (!usage[title]) {
+        usage[title] = { accessCount: 0, lastAccessed: null };
+      }
+      usage[title].accessCount += 1;
+      usage[title].lastAccessed = now;
+      saveUsageData(usage);
+    }
+
+    function renderApplets() {
+      const container = document.getElementById("applet-container");
+      const usage = getUsageData();
+
+      const withUsage = applets.map(applet => {
+        const stats = usage[applet.title] || { accessCount: 0, lastAccessed: "Never" };
+        return {
+          ...applet,
+          accessCount: stats.accessCount,
+          lastAccessed: stats.lastAccessed
+        };
+      });
+
+      const topApps = [...withUsage]
+        .sort((a, b) => b.accessCount - a.accessCount)
+        .slice(0, 3); // Top 3
+      const allApps = withUsage;
+
+      container.innerHTML = "";
+
+      const createSection = (label, data) => {
+        const sectionTitle = document.createElement("h2");
+        sectionTitle.textContent = label;
+        container.appendChild(sectionTitle);
+
+        data.forEach(applet => {
+          const card = document.createElement("div");
+          card.className = "card applet-card";
+          card.innerHTML = `
+            <div class="card-body">
+              <h5 class="card-title">${applet.title}</h5>
+              <p class="card-text">
+                Accessed: ${applet.accessCount} time(s)<br>
+                Last Used: ${applet.lastAccessed}
+              </p>
+              <a href="${applet.url}" class="btn btn-primary applet-btn" onclick="trackAppletAccess('${applet.title}')">Open</a>
+            </div>`;
+          container.appendChild(card);
+        });
+      };
+
+      createSection("Topmost Apps", topApps);
+      createSection("All Applets", allApps);
+    }
+
+    document.addEventListener("DOMContentLoaded", renderApplets);
+  </script>
 </body>
 </html>
